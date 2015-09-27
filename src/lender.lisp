@@ -36,7 +36,10 @@
 (defun start-app ()
   (start app :port *port*))
 
-(ceramic:define-entry-point :markedit ()
+(defun run ()
   (let ((window (ceramic:make-window :url (format nil "http://localhost:~D/" *port*))))
     (ceramic:show-window window)
     (start-app)))
+
+(ceramic:define-entry-point :lender ()
+  (run))
