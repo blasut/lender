@@ -24,6 +24,9 @@
 (defparameter +index+
   (djula:compile-template* "index.html"))
 
+
+;;; Routes
+
 @route app "/"
 (defview index ()
   (render-template (+index+)))
