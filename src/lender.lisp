@@ -9,6 +9,12 @@
   (assets #p"assets/")
   (templates #p"templates/"))
 
+;;; Helpers
+
+(defun parse-float (string)
+  (with-input-from-string (in string)
+  (read in)))
+
 ;;; App
 
 (defapp app
