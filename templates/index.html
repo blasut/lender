@@ -2,8 +2,56 @@
 
 {% block content %}
 
+<div class="container">
+
 <h1>This is my code</h1>
 
-<h2>And some other code</h2>
+<p>Create loan offer</p>
+<form action="/loans" method="post">
+  <div class="form-group">
+      <label for="currency-input">Currency</label>
+      <input id="currency-input" class="form-control" type="text" name="currency" value="XMR" />
+  </div>
+  
+  <div class="form-group">
+      <label for="amount-input">Amount</label>
+      <input id="amount-input" class="form-control" type="text" name="amount" />
+  </div>
+
+  <div class="form-group">
+      <label for="duration-input">Duration</label>
+      <div class="input-group">
+        <input id="duration-input" class="form-control" type="text" name="duration" />
+         <div class="input-group-addon">Days</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+      <label for="duration-input">Auto-renew</label>
+      <select class="form-control" name="auto-renew">
+        <option value="1">On</option>
+        <option value="0">Off</option>
+      </select>
+  </div>  
+  
+  <div class="form-group">
+    <label for="lending-rate-input">Lending-rate</label>
+    <div class="input-group">
+      <input type="text" class="form-control" id="lending-rate-input" placeholder="0.035" name="lending-rate">
+      <div class="input-group-addon">%</div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-default">Create loan offer</button>
+</form>
+
+<h2>And some other code. Hej</h2>
+
+{% for balance in balances %}
+{{ balance }}
+{% endfor %}
+
+  
+</div>
 
 {% endblock %}

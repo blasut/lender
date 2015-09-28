@@ -29,7 +29,19 @@
 
 @route app "/"
 (defview index ()
-  (render-template (+index+)))
+  (let ((balances (carola:get-available-account-balances)))
+    (render-template (+index+)
+                     :balances balances)))
+
+@route app (:post "/loans")
+(defview loans ()
+  (with-params (currency amount duration auto-renew lending-rate)
+     (carola:create-loan-offer (carola:make-currency currency)
+                                 :amount amount
+                                 :duration duration
+                                 :auto-renew auto-renew
+                                 :lending-rate (float (/ (parse-float lending-rate) 100)))
+    (redirect "/")))
 
 
 ;;; Startup
