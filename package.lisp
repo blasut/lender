@@ -2,7 +2,6 @@
 
 (defpackage #:lender
   (:use #:cl
-        #:carola
         #:lucerne)
   (:import-from :ceramic.resource
                 :define-resources

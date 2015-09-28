@@ -4,7 +4,13 @@
 
 <div class="container">
 
-<h1>This is my code</h1>
+<h1>Poloniex lender manager</h1>
+
+{% for balance in balances %} 
+{{ balance }}
+{% endfor %}
+
+<pre>{{ balances }}</pre>
 
 <p>Create loan offer</p>
 <form action="/loans" method="post">
@@ -45,12 +51,65 @@
   <button type="submit" class="btn btn-default">Create loan offer</button>
 </form>
 
-<h2>And some other code. Hej</h2>
+<h3>Open loan orders</h3>
 
-{% for balance in balances %}
-{{ balance }}
-{% endfor %}
 
+<table class="table table-striped">
+  <tr>
+    <th>Coin<th>
+    <th>Rate<th>
+    <th>Yearly rate<th>
+    <th>Amount<th>
+    <th>Duration<th>
+    <th>Auto-renew<th>
+    <th>Date<th>
+    <th>Cancel<th>
+  </tr>
+
+  {% for order in open-orders %}
+  <tr>
+    <td>{{ order.coin  }} <td>
+    <td>{{ order.rate  }}%<td>
+    <td>{{ order.yearly-rate  }}%<td>
+    <td>{{ order.amount  }} <td>
+    <td>{{ order.duration  }} <td>
+    <td><a href="#">{{ order.auto-renew  }}</a> <td>
+    <td>{{ order.date  }} <td>
+    <td><a href="#">Cancel</a><td>
+  </tr>
+  {% endfor %}
+</table>
+
+<h3>Active loans</h3>
+
+
+<table class="table table-striped">
+  <tr>
+    <th>Coin<th>
+    <th>Rate<th>
+    <th>Yearly rate<th>
+    <th>Amount<th>
+    <th>Duration<th>
+    <th>Auto-renew<th>
+    <th>Fees<th>
+    <th>Type<th>
+    <th>Date<th>
+  </tr>
+
+  {% for loan in active-loans %}
+  <tr>
+    <td>{{ loan.currency  }} <td>
+    <td>{{ loan.rate  }}%<td>
+    <td>{{ loan.yearly-rate  }}%<td>
+    <td>{{ loan.amount  }} <td>
+    <td>{{ loan.duration  }} <td>
+    <td><a href="#">{{ loan.auto-renew  }}</a> <td>
+    <td class="success">{{ loan.fees }} <td>
+    <td>{{ loan.type }} <td>
+    <td>{{ loan.date  }} <td>
+   </tr>
+  {% endfor %}
+</table>
   
 </div>
 
