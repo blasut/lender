@@ -57,10 +57,20 @@
 (defun start-app ()
   (start app :port *port*))
 
+(defun stop-app ()
+  (stop app))
+
+(defparameter *window* "")
+
 (defun run ()
   (let ((window (ceramic:make-window :url (format nil "http://localhost:~D/" *port*))))
     (ceramic:show-window window)
+    (setf *window* window)
     (start-app)))
+
+(defun kill ()
+  (stop-app)
+  (ceramic:destroy-window *window*))
 
 (ceramic:define-entry-point :lender ()
   (run))
